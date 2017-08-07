@@ -493,11 +493,11 @@
 % Define a section for CV
 % Usage: \cvsection{<section-title>}
 \newcommand{\cvsection}[1]{%
-  \par\addvspace{1.5ex}
+  \par\addvspace{0ex}
   \phantomsection{}
   \sectionstyle{#1}
   \color{gray}\vhrulefill{0.9pt}
-  \par\nobreak\addvspace{1ex}
+  \par\nobreak\addvspace{-1ex}
 }
 
 % Define a subsection for CV
@@ -533,7 +533,29 @@
       {\entrytitlestyle{#2} & \entrylocationstyle{#3} \\
       \entrypositionstyle{#1} & \entrydatestyle{#4} \\}
     \multicolumn{2}{L{\textwidth}}{\descriptionstyle{#5}} \\
-  \end{tabular*}
+  \end{tabular*}\vspace{-1mm}
+}
+
+\newenvironment{cventryeducation}[4]{%
+	 \setlength\tabcolsep{0pt}
+	\setlength{\extrarowheight}{0pt}
+	\begin{tabular*}{\textwidth}{@{\extracolsep{\fill}} L{\textwidth - 4.5cm} R{4.5cm}}
+		  \ifempty{#2#3}
+		{\entrypositionstyle{#1} & \entrydatestyle{#4} \\}
+		{\entrytitlestyle{#2} & \entrylocationstyle{#3} \\
+			\entrypositionstyle{#1} & \entrydatestyle{#4} \\}\\
+	\end{tabular*}\vspace{-5mm}
+}
+
+\newenvironment{cventrynodescription}[4]{%
+	\setlength\tabcolsep{0pt}
+	\setlength{\extrarowheight}{0pt}
+	\begin{tabular*}{\textwidth}{@{\extracolsep{\fill}} L{\textwidth - 4.5cm} R{4.5cm}}
+		\ifempty{#2#3}
+		{\entrypositionstyle{#1} & \entrydatestyle{#4} \\}
+		{\entrytitlestyle{#2} & \entrylocationstyle{#3} \\
+			\entrypositionstyle{#1} & \entrydatestyle{#4} \\}\\
+	\end{tabular*}\vspace{-5mm}
 }
 
 % Define an environment for cvsubentry
@@ -594,7 +616,7 @@
 
 % Define an environment for cvitems(for cventry)
 \newenvironment{cvitems}{%
-  \vspace{-4mm}
+  \vspace{-5mm}
   \begin{justify}
   \begin{itemize}[leftmargin=2ex, nosep, noitemsep]
     \setlength{\parskip}{0pt}
@@ -602,7 +624,7 @@
 }{%
   \end{itemize}
   \end{justify}
-  \vspace{-2mm}
+  \vspace{-5mm}
 }
 
 
